@@ -50,6 +50,6 @@ The miner script is a simple Node.js application that allows users to mine token
 
 
 3. Run the miner script
-   ``` node miner.js~```
+   ``` node miner.js```
 
 
