@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining DApp</title>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script> <!-- Include Ethers.js -->
+</head>
+<body>
+<h1>Welcome to the Mining DApp</h1>
+<div id="info">
+    <p id="challenge"></p>
+    <p id="difficulty"></p>
+    <p id="address"></p>
+    <p id="status"></p>
+</div>
+<button onclick="connectWallet()">Connect Wallet</button>
+<button onclick="startMining()">Start Mining</button>
+<script src="miner.js"></script>
+<script>
+        async function connectWallet() {
+            if (window.ethereum) {
+                try {
+                    console.log("Connecting to wallet...");
+                    // Request account access if needed
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const address = accounts[0];
+                    document.getElementById("address").innerText = `Connected with address: ${address}`;
+                    console.log(`Connected with address: ${address}`);
+                    // Add the wallet address to the global scope
+                    window.walletAddress = address;
+                } catch (error) {
+                    console.error("User denied account access or error occurred:", error);
+                }
+            } else {
+                console.error("MetaMask is not installed!");
+            }
+        }
+
+        async function startMining() {
+            if (!window.isInitialized) {
+                console.error("Contract is not initialized. Please wait...");
+                document.getElementById("status").innerText = "Contract is not initialized. Please wait...";
+                return;
+            }
+
+            try {
+                console.log("Starting mining...");
+                document.getElementById("status").innerText = "Mining started...";
+                await mine();
+            } catch (error) {
+                console.error("Error in startMining:", error);
+                document.getElementById("status").innerText = "Error during mining.";
+            }
+        }
+    </script>
+</body>
+</html>
