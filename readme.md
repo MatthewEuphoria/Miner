@@ -50,6 +50,6 @@ YOUR_PRIVATE_KEY
 
 
 3. Run the miner script
-   ```node miner.js
+   ``` node miner.js
 
 
