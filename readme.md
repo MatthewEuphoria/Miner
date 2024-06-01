@@ -45,11 +45,11 @@ The miner script is a simple Node.js application that allows users to mine token
 
 2. Replace the placeholder values in miner.js with your own:
 
-YOUR_INFURA_PROJECT_ID
-YOUR_PRIVATE_KEY
+```YOUR_INFURA_PROJECT_ID```
+```YOUR_PRIVATE_KEY```
 
 
 3. Run the miner script
-   ``` node miner.js
+   ``` node miner.js~```
 
 
